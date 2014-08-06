@@ -17,6 +17,14 @@ namespace Code4YeouidoWebService.Helpers
             public String Name { get; set; }
         }
 
+        public static void CrawlBillsWithDB()
+        {
+            using (Code4YeouidoEntities db = new Code4YeouidoEntities())
+            {
+                CrawlBills(db, 1);
+            }
+        }
+
         public static void CrawlBills(Code4YeouidoEntities db, int id)
         {
             HtmlWeb hw = new HtmlWeb();
