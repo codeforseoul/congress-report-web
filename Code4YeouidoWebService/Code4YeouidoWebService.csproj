@@ -130,6 +130,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CrawlHelper.cs" />
+    <Compile Include="Helpers\MailingHelper.cs" />
     <Compile Include="Helpers\ScheduleRegistry.cs" />
     <Compile Include="Models\BillChoice.cs">
       <DependentUpon>Data.tt</DependentUpon>

@@ -20,6 +20,7 @@ namespace Code4YeouidoWebService.Helpers
             //Schedule(() => Console.WriteLine("Timed Task - Will run every day at 9:15pm: " + DateTime.Now)).ToRunEvery(1).Days().At(21, 15);
 
             Schedule(() => CrawlHelper.CrawlBillsWithDB()).ToRunEvery(1).Days().At(1, 0);
+            Schedule(() => MailingHelper.메일발송()).ToRunEvery(1).Days().At(1, 0);
         }
     }
 }
