@@ -9,7 +9,7 @@ namespace Code4YeouidoWebService
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js", "~/Scripts/common.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -24,8 +24,9 @@ namespace Code4YeouidoWebService
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      //"~/Content/bootstrap.css",
+                      "~/Content/site.css",
+                      "~/Content/style.css"));
 
             // 디버깅하려면 EnableOptimizations를 false로 설정합니다. 자세한 내용을 보려면
             // http://go.microsoft.com/fwlink/?LinkId=301862를 방문하십시오.

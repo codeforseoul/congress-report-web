@@ -169,10 +169,42 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\reset.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\done\3p_all.png" />
+    <Content Include="Images\done\3p_middle.png" />
+    <Content Include="Images\done\3p_top.png" />
+    <Content Include="Images\done\mail_icon.png" />
+    <Content Include="Images\done\main_btn.png" />
+    <Content Include="Images\mail\badge.png" />
+    <Content Include="Images\mail\fin.png" />
+    <Content Include="Images\mail\mailing_bg.png" />
+    <Content Include="Images\mail\mailing_bg_cut.png" />
+    <Content Include="Images\mail\mailing_px.jpg" />
+    <Content Include="Images\mail\spam_btn.png" />
+    <Content Include="Images\main\fin.jpg" />
+    <Content Include="Images\main\fin2.jpg" />
+    <Content Include="Images\main\middle.png" />
+    <Content Include="Images\main\signup_btn.png" />
+    <Content Include="Images\main\top.png" />
+    <Content Include="Images\submit\apply_btn.png" />
+    <Content Include="Images\submit\combo_arrow.png" />
+    <Content Include="Images\submit\email_error_icon.png" />
+    <Content Include="Images\submit\email_o_icon.png" />
+    <Content Include="Images\submit\input.png" />
+    <Content Include="Images\submit\profile_icon.png" />
+    <Content Include="Images\submit\px_img_1.jpg" />
+    <Content Include="Images\submit\px_img_2.jpg" />
+    <Content Include="Images\submit\select.png" />
+    <Content Include="Images\submit\select2.png" />
+    <Content Include="Images\submit\x_btn.png" />
+    <Content Include="Images\submit\yellow_bg.png" />
+    <Content Include="Images\submit\yellow_circle_bg.png" />
+    <Content Include="Models\Note.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\Data.edmx">
@@ -192,8 +224,21 @@
       <DependentUpon>Data.edmx</DependentUpon>
       <LastGenOutput>Data.cs</LastGenOutput>
     </Content>
+    <Content Include="fonts\malgun.eot" />
+    <Content Include="fonts\malgun.ttf" />
+    <Content Include="fonts\malgun.woff" />
+    <Content Include="fonts\malgunbd.eot" />
+    <Content Include="fonts\malgunbd.ttf" />
+    <Content Include="fonts\malgunbd.woff" />
+    <Content Include="fonts\NanumBarunGothic.eot" />
+    <Content Include="fonts\NanumBarunGothic.ttf" />
+    <Content Include="fonts\NanumBarunGothic.woff" />
+    <Content Include="fonts\NanumBarunGothicBold.eot" />
+    <Content Include="fonts\NanumBarunGothicBold.ttf" />
+    <Content Include="fonts\NanumBarunGothicBold.woff" />
     <None Include="Properties\PublishProfiles\code4y.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\common.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
