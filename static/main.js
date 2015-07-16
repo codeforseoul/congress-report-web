@@ -1,0 +1,3 @@
+$("#address").geocomplete({
+  details: "form"
+});

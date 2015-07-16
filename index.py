@@ -1,4 +1,6 @@
-from flask import Flask, request, render_template
+#-*- coding: utf-8 -*-
+
+from flask import Flask, redirect, url_for, request, render_template
 app = Flask(__name__)
 
 @app.route("/")
@@ -8,10 +10,9 @@ def index():
 
 @app.route("/signup", methods=['POST'])
 def signup():
-  #
-  # 예지님 코드(form 으로 넘어온 데이터를 디비에 저장)
-  #
-  return "hello world!"
+  print request.form['email']
+  print request.form['address']
+  return redirect(url_for('index'))
 
 
 if __name__ == "__main__":
