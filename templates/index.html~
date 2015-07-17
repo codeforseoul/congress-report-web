@@ -21,18 +21,18 @@
 
       <div class="jumbotron">
         <h1>의원님을 부탁해!</h1>
-        <p class="lead">'의원님을 부탁해' 프로젝트는 지역구 국회의원의 활동 기록을 정리하여<br> 정기적으로 시민들에게 메일을 보내드리는 서비스입니다.</p>
+        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
         <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
       </div>
 
-      <div class="row marketing" style="align:center;">
+      <div class="row marketing">
         <form class="form-inline" action="/signup" method="POST">
           <div class="form-group">
-            <label for="username" style="padding-right:10px;">이메일</label>
+            <label for="username">이메일</label>
             <input type="email" name="email" class="form-control" placeholder="lyn@example.com">
           </div>
           <div class="form-group">
-            <label for="address" style="padding-right:10px;">주소</label>
+            <label for="address">주소</label>
             <input type="text" name="address" id="address" class="form-control" placeholder="비트코인센터">
           </div>
           <button type="submit" class="btn btn-default">Send invitation</button>
