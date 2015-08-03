@@ -10,8 +10,8 @@ def index():
 
 @app.route("/signup", methods=['POST'])
 def signup():
-  print request.form['email']
-  print request.form['address']
+  print(request.form['email'])
+  print(request.form['address'])
   return redirect(url_for('index'))
 
 
