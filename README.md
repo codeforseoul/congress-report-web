@@ -15,6 +15,7 @@ http://localhost:5000
 ```
 
 ## 개발 환경
+- Python 3.4.3
 - [flask](http://flask.pocoo.org/docs/0.10/quickstart/#url-building)
 
 ## 사용 도구
