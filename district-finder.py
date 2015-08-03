@@ -23,7 +23,7 @@ def find_member_idx_with_district(city_name, district_name):
     gen_district = city_name[0:2] + ' ' + district_name
     selected_member = list(
         filter(lambda x: x['district'] == gen_district, assembly_data))[0]
-    return p_find_idx.search(selected_member['url']).group(1)
+    return int(p_find_idx.search(selected_member['url']).group(1))
 
 
 def find_member_idx(city_name, local_name, town_name):
