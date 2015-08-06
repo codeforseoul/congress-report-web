@@ -1,48 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
-  </head>
-  <body>
-    <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="#">Home</a></li>
-            <!-- <li role="presentation"><a href="#">About</a></li>
-            <li role="presentation"><a href="#">Contact</a></li> -->
-          </ul>
-        </nav>
-        <h3 class="text-muted">Congress Report</h3>
-      </div>
-
-      <div class="jumbotron">
-        <h1>의원님을 부탁해!</h1>
-        <p class="lead">'의원님을 부탁해' 프로젝트는 지역구 국회의원의 활동 기록을 정리하여<br> 정기적으로 시민들에게 메일을 보내드리는 서비스입니다.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
-      </div>
-
-      <div class="row marketing" style="align:center;">
-        <form class="form-inline" action="/signup" method="POST">
-          <div class="form-group">
-            <label for="username" style="padding-right:10px;">이메일</label>
-            <input type="email" name="email" class="form-control" placeholder="lyn@example.com">
-          </div>
-          <div class="form-group">
-            <label for="address" style="padding-right:10px;">주소</label>
-            <input type="text" name="address" id="address" class="form-control" placeholder="비트코인센터">
-          </div>
-          <button type="submit" class="btn btn-default">Send invitation</button>
-        </form>
-      </div>
+  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header clearfix">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          <li role="presentation" class="active"><a href="#">Home</a></li>
+          <!-- <li role="presentation"><a href="#">About</a></li>
+          <li role="presentation"><a href="#">Contact</a></li> -->
+        </ul>
+      </nav>
+      <h3 class="text-muted">Congress Report</h3>
     </div>
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-    <script src="/static/jquery/jquery-1.11.0.js"></script>
-    <script src="/static/jquery/jquery.geocomplete.min.js"></script>
-    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/static/main.js"></script>
-  </body>
+
+    <div class="jumbotron">
+      <h1>의원님을 부탁해!</h1>
+      <p class="lead">'의원님을 부탁해' 프로젝트는 지역구 국회의원의 활동 기록을 정리하여<br> 정기적으로 시민들에게 메일을 보내드리는 서비스입니다.</p>
+      <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+    </div>
+
+    <div class="row marketing" style="align:center;">
+      <form class="form-inline" action="/signup" method="POST">
+        <select name="cities" id="cities">
+          <option value="" selected disabled>시/도</option>
+          {% for city in cities | selectattr("name") %}
+            <option value="{{ city['name'] }}">{{ city['name'] }}</li>
+          {% endfor %}
+        </select>
+        <select name="locals" id="locals" disabled>
+          <option value="">시/군/구</option>
+        </select>
+        <select name="towns" id="towns" disabled>
+          <option value="">읍/면/동</option>
+        </select>
+      </form>
+    </div>
+  </div>
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+  <script src="/static/jquery/jquery-1.11.0.js"></script>
+  <script src="/static/jquery/jquery.geocomplete.min.js"></script>
+  <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/static/main.js"></script>
+</body>
 </html>
