@@ -15,20 +15,23 @@ def find_locals(city_name):
 
 def find_towns(city_name, local_name):
   city_info = list(filter(lambda x: x['name'] == city_name, district_data))[0]
-  district_info = list(filter(lambda x: x['local'] == local_name, city_info["district_info"]))[0]
-  return district_info["associated_towns"]
+  district_info = list(filter(lambda x: x['local'] in local_name, city_info["district_info"]))
+  towns = list()
+  for district in district_info:
+    towns = towns + district['associated_towns']
+  return towns
+
 
 def find_district_name(city_name, local_name, town_name):
-  city_info = list(filter(lambda x: x['name'] == city_name, district_data))[0]
+  city_info = list(filter(lambda x: x['name'] in city_name, district_data))[0]
   district_info = city_info['district_info']
-  district_candiates = list(filter(lambda x: x['local'] == local_name, district_info))
-  selected_district_info = None
-  for district_info in district_candiates:
-    is_town_exists = district_info['associated_towns'].index(town_name)
-    if is_town_exists >= 0:
-      selected_district_info = district_info
-      break
-  return selected_district_info['name']
+  district_candidates = list(filter(lambda x: x['local'] == local_name, district_info))
+  district_name = list()
+  for district_info in district_candidates:
+    print(district_info['associated_towns'])
+    if town_name in district_info['associated_towns']:
+      district_name = district_info['name']
+  return district_name
 
 
 def find_member_idx_with_district(city_name, district_name):
