@@ -20,6 +20,8 @@ function getLocalList (cityName) {
     var dList = [];
     var str = '';
 
+    str += '<option value="" selected disabled>시/군/구</option>';
+
     locals.result.forEach(function (d) {
       if (!(dList.indexOf(d.local) > -1)) {
         dList.push(d.local);
