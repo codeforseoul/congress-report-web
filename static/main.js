@@ -5,6 +5,9 @@ $("#address").geocomplete({
 
 $("select#cities").bind('change', function(){
   getLocalList($('#cities').val());
+
+  var defaultOption = '<option value="" selected disabled>읍/면/동</option>';
+  changeSelectState('#towns', defaultOption,true);
 });
 
 $("select#locals").bind('change', function(){
@@ -29,8 +32,7 @@ function getLocalList (cityName) {
       }
     });
 
-    $('#locals').html(str);
-    $('#locals').prop('disabled', false);
+    changeSelectState('#locals', str, false);
   });
 };
 
@@ -42,8 +44,7 @@ function getTownList (cityName, localName) {
       str += '<option value="' + t + '">' + t + '</option>';
     });
 
-    $('#towns').html(str);
-    $('#towns').prop('disabled', false);
+    changeSelectState('#towns', str, false);
   });
 };
 
@@ -52,4 +53,9 @@ function getMemberIdx (cityName, localName, townName) {
   function (idx) {
     alert(idx);
   });
+};
+
+function changeSelectState (selector, content, state) {
+  $(selector).html(content);
+  $(selector).prop('disabled', state);
 };
