@@ -15,7 +15,7 @@ $("select#locals").bind('change', function(){
 });
 
 $("select#towns").bind('change', function(){
-  getMemberIdx($('#cities').val(), $('#locals').val(), $('#towns').val());
+  getMemberInfo($('#cities').val(), $('#locals').val(), $('#towns').val());
 });
 
 function getLocalList (cityName) {
@@ -48,10 +48,10 @@ function getTownList (cityName, localName) {
   });
 };
 
-function getMemberIdx (cityName, localName, townName) {
+function getMemberInfo (cityName, localName, townName) {
   $.get('/member/' + cityName + '/' + localName + '/' + townName,
-  function (idx) {
-    alert(idx);
+  function (info) {
+    alert(info);
   });
 };
 

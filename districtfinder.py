@@ -3,8 +3,28 @@ import json
 import re
 
 district_data = json.load(open('election-data.json', 'r', encoding='utf-8'))
-assembly_data = json.load(open('assembly.json', 'r', encoding='utf-8'))
+assembly_data = json.load(open('modified_assembly.json', 'r', encoding='utf-8'))
 p_find_idx = re.compile(r'dept_cd=(\d+)')
+
+district_prefix_pair = {
+    '전라남도': '전남',
+    '경상남도': '경남',
+    '부산광역시': '부산',
+    '서울특별시': '서울',
+    '경기도': '경기',
+    '강원도': '강원',
+    '인천광역시': '인천',
+    '세종특별자치시': None,
+    '광주광역시': '광주',
+    '대전광역시': '대전',
+    '경상북도': '경북',
+    '전라북도': '전북',
+    '제주특별자치도': '제주',
+    '충청남도': '충남',
+    '울산광역시': '울산',
+    '충청북도': '충북',
+    '대구광역시': '대구'
+}
 
 def find_cities():
   return list(x.get('name') for x in district_data)
@@ -33,15 +53,15 @@ def find_district_name(city_name, local_name, town_name):
       district_name = district_info['name']
   return district_name
 
+def find_member_info(city_name, local_name, town_name):
+    district_name = find_district_name(city_name, local_name, town_name)
+    
+    district_prefix = district_prefix_pair[city_name]
+    gen_district = city_name
+    if district_prefix is not None:
+        gen_district = '%s %s' % (district_prefix, district_name)
 
-def find_member_idx_with_district(city_name, district_name):
-  gen_district = city_name[0:2] + ' ' + district_name
-  selected_member = list(filter(lambda x: x['district'] == gen_district, assembly_data))[0]
-  return int(p_find_idx.search(selected_member['url']).group(1))
-
-
-def find_member_idx(city_name, local_name, town_name):
-  return find_member_idx_with_district(city_name, find_district_name(city_name, local_name, town_name))
+    return next((x for x in assembly_data if x['district'] == gen_district), None)
 
 
 if __name__ == '__main__':
