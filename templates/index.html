@@ -4,48 +4,59 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/semantic-ui/dist/semantic.min.css">
+  <link rel="stylesheet" href="/static/style.css">
 </head>
-<body>
-  <div class="container">
-    <div class="header clearfix">
-      <nav>
-        <ul class="nav nav-pills pull-right">
-          <li role="presentation" class="active"><a href="#">Home</a></li>
-          <!-- <li role="presentation"><a href="#">About</a></li>
-          <li role="presentation"><a href="#">Contact</a></li> -->
-        </ul>
-      </nav>
-      <h3 class="text-muted">Congress Report</h3>
+<body class="pushable">
+  <section class="push">
+    <div class="ui inverted masthead center aligned segment">
+      <div class="ui text container">
+        <h1 class="ui inverted header">의원님을 부탁해!</h1>
+        <p class="lead">'의원님을 부탁해' 프로젝트는 지역구 국회의원의 활동 기록을 정리하여<br> 정기적으로 시민들에게 메일을 보내드리는 서비스입니다.</p>
+      </div>
+      <div class="ui container form">
+        <div class="three fields">
+          <div class="field">
+            <label>시/도</label>
+            <div id="cities" class="ui fluid search selection dropdown">
+              <input name="cities" type="hidden">
+              <i class="dropdown icon"></i>
+              <div class="default text">시/도</div>
+              <div class="menu">
+                {% for city in cities | selectattr("name") %}
+                  <div class="item" data-value="{{ city['name'] }}">{{ city['name'] }}</div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>시/군/구</label>
+            <div id="locals" class="ui fluid search selection dropdown">
+              <input name="country" type="hidden">
+              <i class="dropdown icon"></i>
+              <div class="default text">시/군/구</div>
+              <div class="menu">
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>읍/면/동</label>
+            <div id="towns" class="ui fluid search selection dropdown">
+              <input name="country" type="hidden">
+              <i class="dropdown icon"></i>
+              <div class="default text">읍/면/동</div>
+              <div class="menu">
+                <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="jumbotron">
-      <h1>의원님을 부탁해!</h1>
-      <p class="lead">'의원님을 부탁해' 프로젝트는 지역구 국회의원의 활동 기록을 정리하여<br> 정기적으로 시민들에게 메일을 보내드리는 서비스입니다.</p>
-      <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
-    </div>
-
-    <div class="row marketing" style="align:center;">
-      <form class="form-inline" action="/signup" method="POST">
-        <select name="cities" id="cities">
-          <option value="" selected disabled>시/도</option>
-          {% for city in cities | selectattr("name") %}
-            <option value="{{ city['name'] }}">{{ city['name'] }}</li>
-          {% endfor %}
-        </select>
-        <select name="locals" id="locals" disabled>
-          <option value="">시/군/구</option>
-        </select>
-        <select name="towns" id="towns" disabled>
-          <option value="">읍/면/동</option>
-        </select>
-      </form>
-    </div>
-  </div>
-  <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-  <script src="/static/jquery/jquery-1.11.0.js"></script>
-  <script src="/static/jquery/jquery.geocomplete.min.js"></script>
-  <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/static/jquery/dist/jquery.min.js"></script>
+  <script src="/static/semantic-ui/dist/semantic.min.js"></script>
   <script src="/static/main.js"></script>
 </body>
 </html>

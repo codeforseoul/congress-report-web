@@ -8,19 +8,25 @@
 
 ## 데이터
 
-- [teampopong/data-assembly](https://github.com/teampopong/data-assembly): Korean National Assembly members' data 대한민국 국회위원 아이디, 선거구 등 정보 
+- [teampopong/data-assembly](https://github.com/teampopong/data-assembly): Korean National Assembly members' data 대한민국 국회위원 아이디, 선거구 등 정보
 - election-data.json: 행정구역과 선거구 매칭
 - [중앙선거관리위원회 제19대 국회의원 선거 선거구 및 읍면동현황](http://info.nec.go.kr/electioninfo/electionInfo_report.xhtml?electionId=0020120411&requestURI=%2Felectioninfo%2F0020120411%2Fbi%2Fbigi05.jsp&topMenuId=BI&secondMenuId=BIGI&menuId=BIGI05&statementId=BIGI05&electionCode=2&cityCode=1100&townCode=-1&x=18&y=4)
 
 ## 개발
 
-#### 1. flask 실행
+#### 1. bower 라이브러리 설치
+```
+npm install -g bower
+bower install
+```
+
+#### 2. flask 실행
 ```
 pip install flask
 python index.py
 ```
 
-#### 2. 웹페이지 접속
+#### 3. 웹페이지 접속
 ```
 http://localhost:8080
 ```

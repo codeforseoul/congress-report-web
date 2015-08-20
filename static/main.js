@@ -1,61 +1,89 @@
-$("#address").geocomplete({
-  details: "form"
+['cities', 'locals', 'towns'].forEach(function (type) {
+  switch(type) {
+    case 'cities':
+      $('#' + type).dropdown({
+        onChange: function (value, text, $selectedItem) {
+          getLocalList(value, function (locals) {
+            $('#locals').dropdown('restore defaults');
+            $('#towns').dropdown('restore defaults');
+
+            var str = convertListToMenu(locals, 'local');
+
+            changeSelectState('#locals', str, false);
+            changeSelectState('#towns', '', false);
+          });
+        }
+      });
+      break;
+    case 'locals':
+      $('#' + type).dropdown({
+        onChange: function (value) {
+          getTownList($('#cities').dropdown('get value'), value, function (towns) {
+            $('#towns').dropdown('restore defaults');
+
+            var str = convertListToMenu(towns, 'town');
+
+            changeSelectState('#towns', str, false);
+          });
+        }
+      });
+      break;
+    case 'towns':
+      $('#' + type).dropdown({
+        onChange: function (value) {
+          getMemberInfo($('#cities').dropdown('get value'), $('#locals').dropdown('get value'), value, function (member) {
+            alert(member);
+          });
+        }
+      });
+      break;
+  }
 });
 
-
-$("select#cities").bind('change', function(){
-  getLocalList($('#cities').val());
-
-  var defaultOption = '<option value="" selected disabled>읍/면/동</option>';
-  changeSelectState('#towns', defaultOption,true);
-});
-
-$("select#locals").bind('change', function(){
-  getTownList($('#cities').val(), $('#locals').val());
-});
-
-$("select#towns").bind('change', function(){
-  getMemberInfo($('#cities').val(), $('#locals').val(), $('#towns').val());
-});
-
-function getLocalList (cityName) {
+function getLocalList (cityName, callback) {
   $.get('/locals/' + cityName, function (locals) {
-    var dList = [];
-    var str = '';
-
-    str += '<option value="" selected disabled>시/군/구</option>';
-
-    locals.result.forEach(function (d) {
-      if (!(dList.indexOf(d.local) > -1)) {
-        dList.push(d.local);
-        str += '<option value="' + d.local + '">' + d.local + '</option>';
-      }
-    });
-
-    changeSelectState('#locals', str, false);
+    callback(locals);
   });
 };
 
-function getTownList (cityName, localName) {
+function getTownList (cityName, localName, callback) {
   $.get('/towns/' + cityName + '/' + localName, function (towns) {
-    var str = '';
-    str += '<option value="" selected disabled>읍/면/동</option>';
-    towns.result.forEach(function (t) {
-      str += '<option value="' + t + '">' + t + '</option>';
-    });
-
-    changeSelectState('#towns', str, false);
+    callback(towns);
   });
 };
 
-function getMemberInfo (cityName, localName, townName) {
+function getMemberInfo (cityName, localName, townName, callback) {
   $.get('/member/' + cityName + '/' + localName + '/' + townName,
-  function (info) {
-    alert(info);
+  function (member) {
+    callback(member);
   });
 };
 
 function changeSelectState (selector, content, state) {
-  $(selector).html(content);
-  $(selector).prop('disabled', state);
+  $(selector + ' .menu').html(content);
 };
+
+function convertListToMenu (list, type) {
+  var localList = [];
+  var str = '';
+
+  switch (type) {
+    case 'local':
+      list.result.forEach(function (item) {
+        if (localList.indexOf(item.local) === -1) {
+          localList.push(item.local);
+          str += '<div class="item" data-value="' + item.local + '">' + item.local + '</div>';
+        }
+      });
+      break;
+    case 'town':
+      list.result.forEach(function (item) {
+        if (localList.indexOf(item) === -1) {
+          localList.push(item);
+          str += '<div class="item" data-value="' + item + '">' + item + '</div>';
+        }
+      });
+      break;
+  }
+  return str;
+}

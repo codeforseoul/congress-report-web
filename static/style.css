@@ -1,0 +1,24 @@
+body.pushable {
+  background-color: white !important;
+}
+
+.masthead.segment {
+  min-height: 500px;
+  padding: 1em 0em;
+}
+
+.masthead h1.ui.header {
+  margin-top: 2.5em;
+  margin-bottom: 0em;
+  font-size: 4em;
+  font-weight: normal;
+}
+
+.masthead .ui.form {
+  margin-top: 2em;
+}
+
+.masthead .ui.form .fields .field > label {
+  text-align: left;
+  color: white;
+}
