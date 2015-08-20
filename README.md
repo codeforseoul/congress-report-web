@@ -14,19 +14,21 @@
 
 ## 개발
 
+<!--
 #### 1. bower 라이브러리 설치
 ```
 npm install -g bower
 bower install
 ```
+ -->
 
-#### 2. flask 실행
+#### 1. flask 실행
 ```
 pip install flask
 python index.py
 ```
 
-#### 3. 웹페이지 접속
+#### 2. 웹페이지 접속
 ```
 http://localhost:8080
 ```
