@@ -4,12 +4,13 @@
 # # from flask import Flask, redirect, url_for, request, render_template
 # # app = Flask(__name__)
 
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, String
+# from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy import Column, String
 
 def test():
   username = 'hoony'
   email = 'thechunsik@gmail.com'
+  print username
 
 test()
 
