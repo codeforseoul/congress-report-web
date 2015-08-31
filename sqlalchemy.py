@@ -4,62 +4,53 @@
 # # from flask import Flask, redirect, url_for, request, render_template
 # # app = Flask(__name__)
 
-# from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy import Column, String
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
+engine = create_engine('sqlite:////tmp/test.db', convert_unicode = True)
+db_session = scoped_session(sessionmaker(autocommit = false, autoflush = false, bind = engine))
+Base = declarative_base()
+Base.query = db_session.query_property()
+
+def init_db():
+	import index.py.models 
+	Base.metadata.create_all(bind=engine)
+
+from index.py.database import db_session
+def shutdown_session(exception=None):
+	db_session.remove(index.py)
+
+from sqlalchemy import Column, Integer, String
+from index.py.database import Base
+
+class Signup(Base):
+   _tablename_='signup'
+   id = Column(Integer, primary_key=True)
+   username = Column(String(50), unique=True)
+   email = Column(string(120), unique=True)
+
+   def _init_(self, username=None, email=None):
+   	self.username = username
+   	self.email = email
+
+   def _repr_(self):
+   	return '<signup % r>' % (self.name)
+
+from index.py.database import init_db
+init_db()
+
+from index.py.database import db_session
+from index.py.models import User 
+u = signup('admin', 'admin@localhost')
+db_session.add(u)
+db_session.commit()
+  
 
 def test():
   username = 'hoony'
-  email = 'thechunsik@gmail.com'
-  print username
+  email = 'thechunsik@gmail.com' 
 
-test()
-
-# Base = declarative_base(__name__)
-
-
-# @app.route("/")
-# def index():
-#   # 이메일 신청을 하기 위한 웹페이지
-#   return render_template('index.html')
-
-# @app.route("/signup", methods=['POST'])
-# def signup():
-#   email = request.form['email']
-#   address = request.form['address']
-#   lawmaker = test(address)
-
-
-# class Signup(Base):
-#    _tablename_='signup'
-#    email = db.Column(string)
-#    address = db.Column(string)
-#    lawmaker = db.Column(string)
-
-# def signup(email,address,lawmaker):
-#   self.email = email
-#   self.address = address
-#   self.lawmaker = lawmaker
-
-# def _repr_(signup):
-#   return self.email + self.address + self.lawmaker
-  
-#   # Open database connection
-#   db = MySQLdb.connect("localhost", "root", "", "test")
-#     # prepare a cursor object using cursor() method
-#   cursor = db.cursor()
-
-#   # execute SQL query using execute() method.
-#   cursor.execute("INSERT into test (name, email) values ('hi', '%s')" % email)
-
-#   # Fetch a single row using fetchone() method.
-#   db.commit()
-
-#   # disconnect from server
-#   db.close()
-
-#   # print request.form['email']
-#   # print request.form['address']
-#   return redirect(url_for('index'))
 
 
 # if __name__ == "__main__":
