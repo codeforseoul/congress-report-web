@@ -2,23 +2,48 @@ body.pushable {
   background-color: white !important;
 }
 
-.masthead.segment {
+.ui.segment.masthead.segment {
   min-height: 500px;
   padding: 1em 0em;
 }
 
-.masthead h1.ui.header {
+.ui.segment.masthead h1.ui.header {
   margin-top: 2.5em;
   margin-bottom: 0em;
   font-size: 4em;
   font-weight: normal;
 }
 
-.masthead .ui.form {
+.ui.segment.masthead .ui.form {
   margin-top: 2em;
+  padding: 0rem 10rem;
 }
 
-.masthead .ui.form .fields .field > label {
+@media (max-width: 768px) {
+  .ui.segment.masthead .ui.form {
+    padding: 0rem 1rem;
+  }
+}
+
+.ui.segment.masthead .ui.form .fields .field > label {
   text-align: left;
   color: white;
+}
+
+.ui.segment.quote .row > .column {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.ui.segment.introduction .row > .column {
+  padding: 5rem; 5rem;
+}
+
+.ui.segment.footer .row > .column {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.ui.segment.footer .row > .column .link {
+  padding: 0rem 1rem;
 }
