@@ -2,7 +2,25 @@ body.pushable {
   background-color: white !important;
 }
 
+.ui.segment {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .ui.segment.masthead {
+  background-color: #025fb1;
+  color: white;
   min-height: 400px;
   padding: 1em 0em;
   margin-bottom: 0em;
@@ -10,13 +28,21 @@ body.pushable {
 }
 
 .ui.segment.masthead h1.ui.header {
-  margin-top: 2em;
-  margin-bottom: 0em;
   font-size: 4em;
   font-weight: normal;
 }
 
-.ui.segment.masthead .ui.form {
+.ui.segment.introduction {
+  background-color: #005096;
+  color: white;
+  min-height: 200px;
+}
+
+.ui.segment.segment-button {
+  min-height: 200px;
+}
+
+/*.ui.segment.masthead .ui.form {
   margin-top: 2em;
   padding: 0rem 10rem;
 }
@@ -53,24 +79,39 @@ body.pushable {
 .ui.segment.quote .row > .column {
   padding-top: 5rem;
   padding-bottom: 5rem;
-}
+}*/
 
-.ui.segment.introduction .row > .column {
-  padding: 5rem 5rem;
-}
-
-.ui.segment.footer .row > .column {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
-.ui.segment.footer .row > .column .link {
-  padding: 0rem 1rem;
+footer.ui.footer {
+  color: #025fb1;
 }
 
 /* UI Modal CSS */
-.ui.modal h2.dividing.header {
+.ui.modal {
+  background-color: #ffc000;
+}
+
+/*@media only screen and (min-width: 1200px) {*/
+  .ui.small.modal {
+  	width: 520px;
+  	margin: 0px 0px 0px -360px;
+  }
+/*}*/
+
+@media only screen and (max-width: 767px) {
+  .ui.small.modal {
+    width: 80%;
+  }
+}
+
+.ui.modal .ui.content {
+  background-color: #ffc000;
+  color: white;
+}
+
+.ui.modal h2.header {
   width: 100%;
+  color: white;
+  text-align: center;
 }
 
 .ui.modal img.image-profile {

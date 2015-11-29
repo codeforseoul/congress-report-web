@@ -1,9 +1,9 @@
 $('#register').click(function () {
   $('.ui.small.modal')
-    .modal({
-      blurring: true
-    })
-    .modal('setting', 'transition', 'vertical flip')
+    // .modal({
+    //   blurring: true
+    // })
+    // .modal('setting', 'transition', 'vertical flip')
     .modal('show');
 });
 
@@ -41,11 +41,14 @@ $('#register').click(function () {
       $('#' + type).dropdown({
         onChange: function (value) {
           getMemberInfo($('#cities').dropdown('get value'), $('#locals').dropdown('get value'), value, function (member) {
-            var imgProp = $('.modal .image-profile').prop;
             var defaultImg = 'http://semantic-ui.com/images/wireframe/white-image.png';
-
             member = JSON.parse(member.replace(/'/g, '"'));
-            member.photo ? imgProp('src', member.photo) : imgProp('src', defaultImg);
+
+            if (member.photo) {
+              $('.ui.modal .image-profile').prop('src', member.photo)
+            } else {
+              $('.ui.modal .image-profile').prop('src', defaultImg);
+            }
           });
         }
       });

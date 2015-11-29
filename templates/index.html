@@ -10,77 +10,10 @@
   <section class="push">
     <div class="ui inverted center aligned segment masthead">
       <div class="ui text container">
-        <h1 class="ui inverted header">의원님을 부탁해!</h1>
-        <p class="lead">'의원님을 부탁해' 프로젝트는 지역구 국회의원의 활동 기록을 정리하여<br> 정기적으로 시민들에게 메일을 보내드리는 서비스입니다.</p>
-      </div>
-      <div class="ui small modal">
-        <div class="ui content grid">
-          <div class="row">
-            <h2 class="ui dividing header">메일링 신청하기</h2>
-            <div class="ui container form">
-              <div class="field">
-                <input name="first-name" placeholder="이름" type="text">
-              </div>
-              <div class="field">
-                <input name="last-name" placeholder="이메일" type="email">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <h2 class="ui dividing header">알고 싶은 의원 지역구</h2>
-            <div class="ui container form">
-              <div class="three fields">
-                <div class="field">
-                  <!-- <label>시/도</label> -->
-                  <div id="cities" class="ui fluid search selection dropdown">
-                    <input name="cities" type="hidden">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">시/도</div>
-                    <div class="menu">
-                      {% for city in cities | selectattr("name") %}
-                        <div class="item" data-value="{{ city['name'] }}">{{ city['name'] }}</div>
-                      {% endfor %}
-                    </div>
-                  </div>
-                </div>
-                <div class="field">
-                  <!-- <label>시/군/구</label> -->
-                  <div id="locals" class="ui fluid search selection dropdown">
-                    <input name="country" type="hidden">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">시/군/구</div>
-                    <div class="menu">
-                    </div>
-                  </div>
-                </div>
-                <div class="field">
-                  <!-- <label>읍/면/동</label> -->
-                  <div id="towns" class="ui fluid search selection dropdown">
-                    <input name="country" type="hidden">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">읍/면/동</div>
-                    <div class="menu">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row centered aligned">
-            <!-- TODO: [CONGRESS-REPORT] use a local img for default profile image -->
-            <img class="ui medium bordered image image-profile" src="http://semantic-ui.com/images/wireframe/white-image.png">
-          </div>
-          <div class="row centered aligned">
-            <button class="ui basic button">
-              <!-- TODO: [CONGRESS-REPORT] error with loading icons -->
-              <!-- <i class="icon user"></i> -->
-              신청하기
-            </button>
-          </div>
-        </div>
+        <h2 class="ui inverted header">우리동네 국회의원 통지표를 받아보세요.</h2>
       </div>
     </div>
-    <div class="ui vertical segment quote">
+    <div class="ui vertical segment introduction">
       <div class="ui grid">
         <div class="center aligned row">
           <div class="column">
@@ -91,17 +24,88 @@
         </div>
       </div>
     </div>
-    <div class="ui vertical segment introduction">
+    <div class="ui vertical segment segment-button">
       <div class="ui container grid">
         <div class="center aligned row">
           <div class="column">
-            <button id="register">메일링 신청하기</button>
+            <button id="register" class="ui massive primary button"><strong>메일링</strong> 신청하기</button>
           </div>
         </div>
       </div>
-    </section>
-
+    </div>
+    <footer class="ui vertical center aligned segment footer">
+      <p>Some Rights Reserved | Code for Seoul</p>
+    </footer>
   </section>
+
+  <!-- Start - Register Modal -->
+  <div class="ui small modal">
+    <div class="ui content grid">
+      <div class="row">
+        <h2 class="ui header">메일링 신청하기</h2>
+        <div class="ui container form">
+          <div class="field">
+            <input name="first-name" placeholder="이름" type="text">
+          </div>
+          <div class="field">
+            <input name="last-name" placeholder="이메일" type="email">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <h2 class="ui header">알고 싶은 의원 지역구</h2>
+        <div class="ui container form">
+          <div class="three fields">
+            <div class="field">
+              <!-- <label>시/도</label> -->
+              <div id="cities" class="ui fluid search selection dropdown">
+                <input name="cities" type="hidden">
+                <i class="dropdown icon"></i>
+                <div class="default text">시/도</div>
+                <div class="menu">
+                  {% for city in cities | selectattr("name") %}
+                    <div class="item" data-value="{{ city['name'] }}">{{ city['name'] }}</div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <!-- <label>시/군/구</label> -->
+              <div id="locals" class="ui fluid search selection dropdown">
+                <input name="country" type="hidden">
+                <i class="dropdown icon"></i>
+                <div class="default text">시/군/구</div>
+                <div class="menu">
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <!-- <label>읍/면/동</label> -->
+              <div id="towns" class="ui fluid search selection dropdown">
+                <input name="country" type="hidden">
+                <i class="dropdown icon"></i>
+                <div class="default text">읍/면/동</div>
+                <div class="menu">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row centered aligned">
+        <!-- TODO: [CONGRESS-REPORT] use a local img for default profile image -->
+        <img class="ui medium bordered image image-profile" src="http://semantic-ui.com/images/wireframe/white-image.png">
+      </div>
+      <div class="row centered aligned">
+        <button class="ui secondary button">
+          <!-- TODO: [CONGRESS-REPORT] error with loading icons -->
+          <!-- <i class="icon user"></i> -->
+          신청하기
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- End - Register Modal -->
 
   <script src="/static/vendor/jquery/dist/jquery.min.js"></script>
   <script src="/static/vendor/semantic-ui/dist/semantic.min.js"></script>
