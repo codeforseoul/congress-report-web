@@ -2,7 +2,8 @@
   "name": "congress-report-web",
   "version": "0.0.1",
   "dependencies": {
-    "semantic-ui": "~2.0.8"
+    "semantic-ui": "~2.0.8",
+    "jquery": "~2.1.4"
   },
   "devDependencies": {}
 }

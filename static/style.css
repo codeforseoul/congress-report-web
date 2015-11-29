@@ -2,13 +2,15 @@ body.pushable {
   background-color: white !important;
 }
 
-.ui.segment.masthead.segment {
-  min-height: 500px;
+.ui.segment.masthead {
+  min-height: 400px;
   padding: 1em 0em;
+  margin-bottom: 0em;
+  border-radius: 0px;
 }
 
 .ui.segment.masthead h1.ui.header {
-  margin-top: 2.5em;
+  margin-top: 2em;
   margin-bottom: 0em;
   font-size: 4em;
   font-weight: normal;
@@ -30,13 +32,31 @@ body.pushable {
   color: white;
 }
 
+.ui.segment.quote {
+    background-color:#005096;
+    color: white;
+    position: relative;
+}
+
+.ui.segment.quote::after {
+    left: 45%;
+    right: auto;
+    content: " ";
+    position: absolute;
+    bottom: -11px;
+    border-bottom: 60px solid #005096;
+    border-right: 60px solid transparent;
+    border-left: 60px solid transparent;
+    border-radius: 100%;
+}
+
 .ui.segment.quote .row > .column {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
 
 .ui.segment.introduction .row > .column {
-  padding: 5rem; 5rem;
+  padding: 5rem 5rem;
 }
 
 .ui.segment.footer .row > .column {
@@ -46,4 +66,14 @@ body.pushable {
 
 .ui.segment.footer .row > .column .link {
   padding: 0rem 1rem;
+}
+
+/* UI Modal CSS */
+.ui.modal h2.dividing.header {
+  width: 100%;
+}
+
+.ui.modal img.image-profile {
+  max-width: 300px;
+  max-height: 300px;
 }

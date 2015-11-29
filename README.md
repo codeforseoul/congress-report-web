@@ -3,7 +3,7 @@
 
 ## 개발 환경
 
-- python 3.4.3
+- python ^3.4.3
 - flask
 
 ## 데이터
@@ -14,13 +14,11 @@
 
 ## 개발
 
-<!--
 #### 1. bower 라이브러리 설치
 ```
 npm install -g bower
 bower install
 ```
- -->
 
 #### 1. flask 실행
 ```

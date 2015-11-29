@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <link rel="stylesheet" href="/static/semantic-ui/dist/semantic.min.css">
+  <link rel="stylesheet" href="/static/vendor/semantic-ui/dist/semantic.min.css">
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body class="pushable">
@@ -14,40 +13,69 @@
         <h1 class="ui inverted header">의원님을 부탁해!</h1>
         <p class="lead">'의원님을 부탁해' 프로젝트는 지역구 국회의원의 활동 기록을 정리하여<br> 정기적으로 시민들에게 메일을 보내드리는 서비스입니다.</p>
       </div>
-      <div class="ui container form">
-        <div class="three fields">
-          <div class="field">
-            <label>시/도</label>
-            <div id="cities" class="ui fluid search selection dropdown">
-              <input name="cities" type="hidden">
-              <i class="dropdown icon"></i>
-              <div class="default text">시/도</div>
-              <div class="menu">
-                {% for city in cities | selectattr("name") %}
-                  <div class="item" data-value="{{ city['name'] }}">{{ city['name'] }}</div>
-                {% endfor %}
+      <div class="ui small modal">
+        <div class="ui content grid">
+          <div class="row">
+            <h2 class="ui dividing header">메일링 신청하기</h2>
+            <div class="ui container form">
+              <div class="field">
+                <input name="first-name" placeholder="이름" type="text">
+              </div>
+              <div class="field">
+                <input name="last-name" placeholder="이메일" type="email">
               </div>
             </div>
           </div>
-          <div class="field">
-            <label>시/군/구</label>
-            <div id="locals" class="ui fluid search selection dropdown">
-              <input name="country" type="hidden">
-              <i class="dropdown icon"></i>
-              <div class="default text">시/군/구</div>
-              <div class="menu">
+          <div class="row">
+            <h2 class="ui dividing header">알고 싶은 의원 지역구</h2>
+            <div class="ui container form">
+              <div class="three fields">
+                <div class="field">
+                  <!-- <label>시/도</label> -->
+                  <div id="cities" class="ui fluid search selection dropdown">
+                    <input name="cities" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">시/도</div>
+                    <div class="menu">
+                      {% for city in cities | selectattr("name") %}
+                        <div class="item" data-value="{{ city['name'] }}">{{ city['name'] }}</div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <!-- <label>시/군/구</label> -->
+                  <div id="locals" class="ui fluid search selection dropdown">
+                    <input name="country" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">시/군/구</div>
+                    <div class="menu">
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <!-- <label>읍/면/동</label> -->
+                  <div id="towns" class="ui fluid search selection dropdown">
+                    <input name="country" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">읍/면/동</div>
+                    <div class="menu">
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="field">
-            <label>읍/면/동</label>
-            <div id="towns" class="ui fluid search selection dropdown">
-              <input name="country" type="hidden">
-              <i class="dropdown icon"></i>
-              <div class="default text">읍/면/동</div>
-              <div class="menu">
-              </div>
-            </div>
+          <div class="row centered aligned">
+            <!-- TODO: [CONGRESS-REPORT] use a local img for default profile image -->
+            <img class="ui medium bordered image image-profile" src="http://semantic-ui.com/images/wireframe/white-image.png">
+          </div>
+          <div class="row centered aligned">
+            <button class="ui basic button">
+              <!-- TODO: [CONGRESS-REPORT] error with loading icons -->
+              <!-- <i class="icon user"></i> -->
+              신청하기
+            </button>
           </div>
         </div>
       </div>
@@ -56,31 +84,18 @@
       <div class="ui grid">
         <div class="center aligned row">
           <div class="column">
-            <h1>"누구나 정치를 쉽고 재미있게 이해할 수 있는 세상을 지향합니다"</h1>
-            <h2><a href="//popong.com" target="_blank">팀포퐁</a></h2>
+            <p>우리동네 국회의원의 한 주가 궁금하다면 국회 성적표에서 메일을 받아보세요.<br/>
+              내가 받아보고싶은 국회의원을 선택해 이번 달에 발의된 법안,<br/>통과된 법안, 국회의원의 국회 출석률까지 알 수 있습니다.
+            </p>
           </div>
         </div>
       </div>
     </div>
-    <div class="ui inverted vertical segment introduction">
+    <div class="ui vertical segment introduction">
       <div class="ui container grid">
         <div class="center aligned row">
           <div class="column">
-            <p>의원님을 부탁해?</p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <section class="ui vertical segment footer">
-      <div class="ui grid">
-        <div class="center aligned row">
-          <div class="column">
-            <p><a href="mailto:thechunsik@gmail.com" class="link">연락하기</a> <a href="//slack.codeforseoul.org" class="link">참여하기</a> <span class="link">소스코드: <a href="https://github.com/codeforseoul/congress-report">데이터</a>, <a href="https://github.com/codeforseoul/congress-report">웹페이지</a></span></p>
-            <p><a href="//codeforseoul.org">Code for Seoul</a></p>
+            <button id="register">메일링 신청하기</button>
           </div>
         </div>
       </div>
@@ -88,8 +103,8 @@
 
   </section>
 
-  <script src="/static/jquery/dist/jquery.min.js"></script>
-  <script src="/static/semantic-ui/dist/semantic.min.js"></script>
+  <script src="/static/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="/static/vendor/semantic-ui/dist/semantic.min.js"></script>
   <script src="/static/main.js"></script>
 </body>
 </html>

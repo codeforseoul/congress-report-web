@@ -17,8 +17,8 @@ def index():
 
 @app.route("/signup", methods=["POST"])
 def signup():
-  print(request.form['email'])
-  print(request.form['address'])
+  # print(request.form['email'])
+  # print(request.form['address'])
   return redirect(url_for('index'))
 
 @app.route("/locals/<city_name>", methods=["GET"])
@@ -34,4 +34,4 @@ def get_member_info(city_name, local_name, town_name):
   return str(find_member_info(city_name, local_name, town_name))
 
 if __name__ == "__main__":
-  app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT', 8080)), debug = True)
+  app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080)))
