@@ -19,7 +19,7 @@ body.pushable {
 }
 
 .ui.segment.masthead {
-  background-color: #025fb1;
+  background-image: url('/static/images/background-graph.png');
   color: white;
   min-height: 400px;
   padding: 1em 0em;
@@ -33,13 +33,17 @@ body.pushable {
 }
 
 .ui.segment.introduction {
-  background-color: #005096;
+  background-image: url('/static/images/background-intro.png');
+  background-position: center center;
+  background-color: white;
   color: white;
-  min-height: 200px;
+  height: 180px;
+  border-bottom: none;
 }
 
 .ui.segment.segment-button {
   min-height: 200px;
+  border-top: none;
 }
 
 /*.ui.segment.masthead .ui.form {
