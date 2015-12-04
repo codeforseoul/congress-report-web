@@ -41,21 +41,19 @@ def find_towns(city_name, local_name):
     towns = towns + district['associated_towns']
   return towns
 
-
 def find_district_name(city_name, local_name, town_name):
   city_info = list(filter(lambda x: x['name'] in city_name, district_data))[0]
   district_info = city_info['district_info']
   district_candidates = list(filter(lambda x: x['local'] == local_name, district_info))
   district_name = list()
   for district_info in district_candidates:
-    print(district_info['associated_towns'])
     if town_name in district_info['associated_towns']:
       district_name = district_info['name']
   return district_name
 
 def find_member_info(city_name, local_name, town_name):
     district_name = find_district_name(city_name, local_name, town_name)
-    
+
     district_prefix = district_prefix_pair[city_name]
     gen_district = city_name
     if district_prefix is not None:
@@ -63,7 +61,6 @@ def find_member_info(city_name, local_name, town_name):
 
     return next((x for x in assembly_data if x['district'] == gen_district), None)
 
-
 if __name__ == '__main__':
+    # Test
     member_name = find_member_idx('울산광역시', '울주군', '청량면')
-    print(member_name)

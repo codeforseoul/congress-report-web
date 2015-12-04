@@ -7,6 +7,12 @@ $('#register').click(function () {
     .modal('show');
 });
 
+// email validation on front-end side.
+$('.ui.modal .useremail').keydown(function() {
+  console.log(isEmail($(this).val()));
+});
+
+// look for the congress-man who is a representitive for the user
 ['cities', 'locals', 'towns'].forEach(function (type) {
   switch(type) {
     case 'cities':
@@ -102,4 +108,9 @@ function convertListToMenu (list, type) {
       break;
   }
   return str;
+}
+
+function isEmail(email) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
 }

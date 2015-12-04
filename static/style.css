@@ -23,8 +23,30 @@ body.pushable {
   color: white;
   min-height: 400px;
   padding: 1em 0em;
+  margin-top: 2em;
   margin-bottom: 0em;
   border-radius: 0px;
+}
+
+#logo {
+  position: absolute;
+  top: -1.5em;
+  left: 0em;
+  right: 0em;
+}
+
+#logo > .logo-text {
+  font-size: 1.2em;
+  z-index: 12;
+  display: inline-block;
+  position: absolute;
+  top: 1.7em;
+  left: 0;
+  right: 0;
+}
+
+#logo > .logo-circle {
+  z-index: 10;
 }
 
 .ui.segment.masthead h1.ui.header {
