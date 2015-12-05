@@ -7,6 +7,14 @@ $('#register').click(function () {
     .modal('show');
 });
 
+$('#signup').click(function() {
+  $.post('/signup', {
+    username: $('.ui.modal .username').val(),
+    email: $('.ui.modal .email').val()
+  });
+  // TODO: callback after sending POST request to server
+})
+
 // email validation on front-end side.
 $('.ui.modal .useremail').keydown(function() {
   console.log(isEmail($(this).val()));

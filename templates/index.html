@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Congress Report</title>
+  
   <link rel="stylesheet" href="/static/vendor/semantic-ui/dist/semantic.min.css">
   <link rel="stylesheet" href="/static/style.css">
 </head>
@@ -50,10 +52,10 @@
         <h2 class="ui header">메일링 신청하기</h2>
         <div class="ui container form">
           <div class="field">
-            <input name="first-name" placeholder="이름" type="text" class="username">
+            <input name="username" placeholder="이름" type="text" class="username">
           </div>
           <div class="field">
-            <input name="last-name" placeholder="이메일" type="email" class="useremail">
+            <input name="email" placeholder="이메일" type="email" class="email">
           </div>
         </div>
       </div>
@@ -102,7 +104,7 @@
         <img class="ui medium bordered image image-profile" src="http://semantic-ui.com/images/wireframe/white-image.png">
       </div>
       <div class="row centered aligned">
-        <button class="ui secondary button">
+        <button id="signup" class="ui secondary button">
           <!-- TODO: [CONGRESS-REPORT] error with loading icons -->
           <!-- <i class="icon user"></i> -->
           신청하기
