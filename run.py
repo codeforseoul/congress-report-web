@@ -12,7 +12,7 @@ from settings import IP, PORT
 
 district_data = json.load(open('election-data.json', 'r', encoding='utf-8'))
 app = Flask(__name__)
-env = Environment(loader=PackageLoader('index', 'templates'))
+env = Environment(loader=PackageLoader('run', 'templates'))
 
 @app.route("/")
 def index():
@@ -21,11 +21,10 @@ def index():
 
 @app.route("/signup", methods=["POST"])
 def signup():
-    user = User(request.form['username'], request.form['email'])
+    user = User(request.form['username'], request.form['email'], request.form['assembly_id'])
     result = user.save()
-    
     # TODO: return after saving user's data && error handling
-    return redirect(url_for('index'))
+    return str(result)
 
 @app.route("/locals/<city_name>", methods=["GET"])
 def get_locals(city_name):

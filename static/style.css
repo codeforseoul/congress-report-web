@@ -54,13 +54,40 @@ body.pushable {
   font-weight: normal;
 }
 
-.ui.segment.introduction {
+.ui.segment.introduction, .ui.segment.result {
   background-image: url('/static/images/background-intro.png');
   background-position: center center;
   background-color: white;
   color: white;
   height: 180px;
   border-bottom: none;
+}
+
+.ui.segment.result {
+  background-color: #07387C;
+  height: 280px;
+}
+
+.ui.segment.result img.image-profile {
+  border-radius: 10em;
+  width: 9em;
+  height: 9em;
+  position: absolute;
+  top: -5.5em;
+  left: 0em;
+  right: 0em;
+  margin: 0 auto;
+}
+
+.ui.segment.result p.assembly-profile {
+  margin-top: 5em;
+}
+
+.ui.segment.result p.result-message {
+  display: inline-block;
+  padding: 0.5em;
+  background-color: white;
+  color: black;
 }
 
 .ui.segment.segment-button {

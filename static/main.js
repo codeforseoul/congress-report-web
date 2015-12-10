@@ -1,3 +1,6 @@
+var isEmailValid = false;
+var selectedAssemblyId = '';
+
 $('#register').click(function () {
   $('.ui.small.modal')
     // .modal({
@@ -8,16 +11,40 @@ $('#register').click(function () {
 });
 
 $('#signup').click(function() {
-  $.post('/signup', {
-    username: $('.ui.modal .username').val(),
-    email: $('.ui.modal .email').val()
-  });
+  if (isEmailValid && selectedAssemblyId) {
+    var username = $('.ui.modal .username').val();
+    var email = $('.ui.modal .email').val();
+    
+    $.post('/signup', {
+      username: username,
+      email: email,
+      assembly_id: selectedAssemblyId
+    }, function(result) {
+      $('.ui.segment.result .user-profile > span.name').text(username);
+      $('.ui.segment.result .user-profile > span.email').text(email);
+      
+      $('.ui.segment.introduction').css('display', 'none');
+      $('.ui.segment.result').css('display', 'block');
+      
+      $('.ui.modal').modal('hide');
+    });
   // TODO: callback after sending POST request to server
+  } else if (!isEmailValid) {
+    alert('올바른 이메일 주소를 입력해주세요.');
+  } else if (!selectedAssemblyId) {
+    alert('알고싶은 지역구를 선택해주세요.')
+  }
 })
 
 // email validation on front-end side.
-$('.ui.modal .useremail').keydown(function() {
-  console.log(isEmail($(this).val()));
+$('.ui.modal .email').focusout(function() {
+  isEmailValid = isEmail($(this).val());
+  
+  if (isEmailValid) {
+    $(this).parent().removeClass('error');
+  } else {
+    $(this).parent().addClass('error');
+  }
 });
 
 // look for the congress-man who is a representitive for the user
@@ -56,10 +83,20 @@ $('.ui.modal .useremail').keydown(function() {
         onChange: function (value) {
           getMemberInfo($('#cities').dropdown('get value'), $('#locals').dropdown('get value'), value, function (member) {
             var defaultImg = 'http://semantic-ui.com/images/wireframe/white-image.png';
+
             member = JSON.parse(member.replace(/'/g, '"'));
 
             if (member.photo) {
-              $('.ui.modal .image-profile').prop('src', member.photo)
+              $('.ui.modal .image-profile').prop('src', member.photo);
+              
+              // result view
+              $('.ui.segment.result .image-profile').prop('src', member.photo);
+              $('.ui.segment.result .assembly-name').text(member.name_kr);
+              $('.ui.segment.result .assembly-district').text(member.district);
+              $('.ui.segment.result .assembly-party').text(member.party);
+              
+              $('figure > figcaption').text(member.party + ' | ' + member.district + ' | ' + member.name_kr);
+              selectedAssemblyId = member.open_assembly_idx;
             } else {
               $('.ui.modal .image-profile').prop('src', defaultImg);
             }

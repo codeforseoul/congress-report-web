@@ -7,12 +7,12 @@ db = client.congress_report
 users = db.users
 
 class User:
-    def __init__(self, username, email):
-        self.username = username
-        self.email = email
+    def __init__(self, username, email, assembly_id):
+        self.username, self.email, self.assembly_id = username, email, assembly_id
     
     def save(self):
-        return users.insert({ "username": self.username, "email": self.email})
+        print(self.assembly_id)
+        return users.insert({'username': self.username, 'email': self.email, 'assembly_id': self.assembly_id})
         # TODO: error handling
         # try:
         #     result = users.insert({ "username": self.username, "email": self.email)
