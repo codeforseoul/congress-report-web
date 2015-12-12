@@ -14,12 +14,13 @@ $('#signup').click(function() {
   if (isEmailValid && selectedAssemblyId) {
     var username = $('.ui.modal .username').val();
     var email = $('.ui.modal .email').val();
-    
+
     $.post('/signup', {
       username: username,
       email: email,
       assembly_id: selectedAssemblyId
     }, function(result) {
+      // TODO: result status handling
       $('.ui.segment.result .user-profile > span.name').text(username);
       $('.ui.segment.result .user-profile > span.email').text(email);
       
@@ -28,7 +29,6 @@ $('#signup').click(function() {
       
       $('.ui.modal').modal('hide');
     });
-  // TODO: callback after sending POST request to server
   } else if (!isEmailValid) {
     alert('올바른 이메일 주소를 입력해주세요.');
   } else if (!selectedAssemblyId) {
@@ -41,8 +41,10 @@ $('.ui.modal .email').focusout(function() {
   isEmailValid = isEmail($(this).val());
   
   if (isEmailValid) {
+    $('.ui.modal .ui.error.message-email').css('display', 'none');
     $(this).parent().removeClass('error');
   } else {
+    $('.ui.modal .ui.error.message-email').css('display', 'block');
     $(this).parent().addClass('error');
   }
 });
@@ -88,8 +90,10 @@ $('.ui.modal .email').focusout(function() {
 
             if (member.photo) {
               $('.ui.modal .image-profile').prop('src', member.photo);
-              
-              // result view
+
+              // 
+              // change result view
+              // 
               $('.ui.segment.result .image-profile').prop('src', member.photo);
               $('.ui.segment.result .assembly-name').text(member.name_kr);
               $('.ui.segment.result .assembly-district').text(member.district);

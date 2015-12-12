@@ -2,9 +2,11 @@
 
 import os
 
-__all__ = ['MONGO_USERNAME', 'MONGO_PASSWORD', 'IP', 'PORT']
+__all__ = ['MONGO_HOST', 'MONGO_PORT', 'MONGO_USERNAME', 'MONGO_PASSWORD', 'SERVER_IP', 'SERVER_PORT']
 
+MONGO_HOST = 'localhost'
+MONGO_PORT = 27017
 MONGO_USERNAME = os.environ['mongoUsername']
 MONGO_PASSWORD = os.environ['mongoPwd']
-IP = '0.0.0.0'
-PORT = 8080
+SERVER_IP = '0.0.0.0'
+SERVER_PORT = 8080

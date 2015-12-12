@@ -8,7 +8,7 @@ from flask.json import jsonify
 from jinja2 import Environment, PackageLoader
 
 from db import User
-from settings import IP, PORT
+from settings import SERVER_IP, SERVER_PORT
 
 district_data = json.load(open('election-data.json', 'r', encoding='utf-8'))
 app = Flask(__name__)
@@ -21,10 +21,15 @@ def index():
 
 @app.route("/signup", methods=["POST"])
 def signup():
-    user = User(request.form['username'], request.form['email'], request.form['assembly_id'])
+    params = request.form
+
+    user = User(params['username'], params['email'], params['assembly_id'])
     result = user.save()
-    # TODO: return after saving user's data && error handling
-    return str(result)
+    
+    result['status_code'] = 200 if result['status'] == 'success' else 500
+    result['message'] = str(result['message'])
+
+    return jsonify(result)
 
 @app.route("/locals/<city_name>", methods=["GET"])
 def get_locals(city_name):
@@ -39,4 +44,4 @@ def get_member_info(city_name, local_name, town_name):
     return str(find_member_info(city_name, local_name, town_name))
 
 if __name__ == "__main__":
-    app.run(host=os.getenv('IP', IP), port=int(os.getenv('PORT', PORT)))
+    app.run(host=os.getenv('IP', SERVER_IP), port=int(os.getenv('PORT', SERVER_PORT)))
